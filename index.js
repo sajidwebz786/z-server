@@ -20,9 +20,18 @@ const PORT = process.env.PORT || 5000;
 // Middleware
 app.use(helmet({ crossOriginResourcePolicy: false }));
 const allowedOrigins = process.env.CORS_ORIGINS
-  ? process.env.CORS_ORIGINS.split(',')
+  ? process.env.CORS_ORIGINS.split(',').map((origin) => origin.trim()).filter(Boolean)
   : ['http://localhost:5173', 'http://localhost:3000', 'http://localhost:5174'];
-app.use(cors({ origin: allowedOrigins, credentials: true }));
+const devOriginPattern = /^http:\/\/(localhost|127\.0\.0\.1|192\.168\.\d{1,3}\.\d{1,3}):(3000|5173|5174)$/;
+app.use(cors({
+  origin(origin, callback) {
+    if (!origin || allowedOrigins.includes(origin) || devOriginPattern.test(origin)) {
+      return callback(null, true);
+    }
+    return callback(new Error(`CORS blocked for origin ${origin}`));
+  },
+  credentials: true,
+}));
 app.use(express.json({ limit: '10mb' }));
 app.use(express.urlencoded({ extended: true }));
 
