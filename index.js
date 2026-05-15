@@ -19,9 +19,16 @@ const PORT = process.env.PORT || 5000;
 
 // Middleware
 app.use(helmet({ crossOriginResourcePolicy: false }));
-const allowedOrigins = process.env.CORS_ORIGINS
+const configuredOrigins = process.env.CORS_ORIGINS
   ? process.env.CORS_ORIGINS.split(',').map((origin) => origin.trim()).filter(Boolean)
-  : ['http://localhost:5173', 'http://localhost:3000', 'http://localhost:5174'];
+  : [];
+const allowedOrigins = [
+  'http://localhost:5173',
+  'http://localhost:3000',
+  'http://localhost:5174',
+  'https://client-z.onrender.com',
+  ...configuredOrigins,
+];
 const devOriginPattern = /^http:\/\/(localhost|127\.0\.0\.1|192\.168\.\d{1,3}\.\d{1,3}):(3000|5173|5174)$/;
 app.use(cors({
   origin(origin, callback) {
