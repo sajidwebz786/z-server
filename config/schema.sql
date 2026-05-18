@@ -288,7 +288,7 @@ INSERT INTO FAQs (question, answer, category, display_order) VALUES
   ('What is included in Career Boost?', 'The Career Boost is a comprehensive 4-month program with an advanced curriculum, live industry projects, 1-on-1 mentorship from experts, and dedicated placement assistance. You get lifetime access to all course materials.', 'general', 2),
   ('What is included in Elite Success Pro?', 'Elite Success Pro includes 1:1 mentorship, live domain projects, portfolio building, HR interview mastery, global job-ready program, and priority support.', 'general', 3),
   ('Does Zulanex include project internships?', 'Yes. The source materials describe live domain specific project internships, project documents, task list plans, internship certificate, and reviewed project work.', 'general', 4),
-  ('What prices are shown in the source materials?', 'The source materials show Trial Pass at ₹99, Career Boost at ₹3999, and Elite Success Pro at ₹5999.', 'payment', 5),
+  ('What prices are shown in the source materials?', 'The source materials show Trial Pass at ₹99, Career Boost at ₹2999, and Elite Success Pro at ₹4999.', 'payment', 5),
   ('Do I get certificates?', 'The source materials mention certified courses, industry-recognized certificates, certificate of participation, and internship certificates.', 'general', 6),
   ('What are the payment options?', 'We accept online payments through Razorpay supporting UPI, Credit/Debit Cards, Net Banking, and EMI options.', 'payment', 7),
   ('Is there any prerequisite for joining?', 'No specific prerequisites are needed. Our programs are designed for beginners as well as those looking to upskill. Basic computer literacy is sufficient.', 'general', 8)
