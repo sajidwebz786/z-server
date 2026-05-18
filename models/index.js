@@ -232,13 +232,14 @@ async function seedDefaults() {
   }
 
   const statRows = [
-    ['Learners', 10000000, 'FaGraduationCap', '', 1],
-    ['Top MNCs', 100, 'FaBook', '+', 2],
-    ['Training Experts', 300, 'FaChalkboardTeacher', '+', 3],
-    ['Start Ups', 2500, 'FaChartLine', '+', 4],
+    ['Learners', 500, 'FaGraduationCap', '+', 1],
+    ['Hiring Partners', 25, 'FaBook', '+', 2],
+    ['Training Experts', 40, 'FaChalkboardTeacher', '+', 3],
+    ['Project Tracks', 80, 'FaChartLine', '+', 4],
   ];
   for (const [label, value, icon, suffix, display_order] of statRows) {
-    await Stat.findOrCreate({ where: { label }, defaults: { value, icon, suffix, display_order } });
+    const [stat] = await Stat.findOrCreate({ where: { label }, defaults: { value, icon, suffix, display_order } });
+    await stat.update({ value, icon, suffix, display_order, is_active: true });
   }
 }
 

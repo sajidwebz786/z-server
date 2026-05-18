@@ -27,6 +27,8 @@ const allowedOrigins = [
   'http://localhost:3000',
   'http://localhost:5174',
   'https://client-z.onrender.com',
+  'https://zulanex.com',
+  'https://www.zulanex.com',
   ...configuredOrigins,
 ];
 const devOriginPattern = /^http:\/\/(localhost|127\.0\.0\.1|192\.168\.\d{1,3}\.\d{1,3}):(3000|5173|5174)$/;
