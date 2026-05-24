@@ -25,7 +25,9 @@ router.post('/register', async (req, res) => {
     const passwordHash = await bcrypt.hash(password, salt);
 
     const result = await pool.query(
-      'INSERT INTO users (full_name, email, password_hash, phone, role, is_verified) VALUES ($1, $2, $3, $4, $5, $6) RETURNING id, full_name, email, role',
+      `INSERT INTO users (full_name, email, password_hash, phone, role, is_verified, created_at, updated_at)
+       VALUES ($1, $2, $3, $4, $5, $6, NOW(), NOW())
+       RETURNING id, full_name, email, role`,
       [fullName, email, passwordHash, phone || null, 'student', true]
     );
 
@@ -98,7 +100,9 @@ router.post('/google', async (req, res) => {
           ['google', googleId, picture, user.id]);
       } else {
         result = await pool.query(
-          'INSERT INTO users (full_name, email, oauth_provider, oauth_id, avatar_url, role, is_verified) VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING *',
+          `INSERT INTO users (full_name, email, oauth_provider, oauth_id, avatar_url, role, is_verified, created_at, updated_at)
+           VALUES ($1, $2, $3, $4, $5, $6, $7, NOW(), NOW())
+           RETURNING *`,
           [name, email, 'google', googleId, picture, 'student', true]
         );
         user = result.rows[0];
